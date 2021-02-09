@@ -1,65 +1,41 @@
 <template>
     <div class="details">
+        <div class="container">
+            <!-- start detials layout -->
+            <div class="details-layout group-section">
+                <div class="img">
+                    <img class='responsive-img' src="../assets/Bitmap@1X(14).png">
+                </div>
 
-        <!-- start detials layout -->
-        <div class="details-layout">
-            <div class="container">
                 <div class="row">
-                    <div class="col l4 s12">
-                        <div class="img">
-                            <div class="slider">
-                                <ul class="slides">
-                                <li>
-                                    <img :src="img">
-                                </li>
-                                <li>
-                                    <img src="https://via.placeholder.com/500">
-                                </li>
-                                <li>
-                                    <img src="https://via.placeholder.com/500">
-                                </li>
-                                <li>
-                                    <img src="https://via.placeholder.com/500">
-                                </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col l8 s12">
                         <div class="txt-container">
-                            <div class="txt white-text">
+                            <div class="txt" v-show='body.length > 0'>
+                                <h1>{{title}}</h1>
                                 <div class='desc'>
-                                    <h2 class='lime-text text-accent-2'>Title:</h2>
-                                    <p>{{title}}</p>
-                                </div>
-                            </div>
-
-                            <div class="txt white-text" v-show='body.length > 0'>
-                                <div class='desc'>
-                                    <h2 class='lime-text text-accent-2'>Description:</h2>
+                                    <h2>Description:</h2>
                                     <p>{{body}}.</p>
                                 </div>
+                                <a class='waves-effect waves-light btn'>Read More</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- end details layout -->
+            <!-- end details layout -->
 
-        <!-- start recomended section -->
-        <div class='group-section'>
-            <div class='container'>
-                <h3 class='mainFont lime-text text-accent-2'>
-                 Recomended
+            <!-- start recomended section -->
+            <div class='group-section'>
+                <h3>
+                    Recomended
                 </h3>
                 <div class='layout'>
-                <div class="row">
-                    <card v-for='game in recomended.slice(0,8)' :key='game.id' :id='game.id' :title='game.title' :body='game.body' :category='game.category'></card>
-                </div>
-                <div class="center-align">
-                    <a class="waves-effect waves-light btn">See More</a>
-                </div>
+                    <div class="row">
+                        <card v-for='(game,i) in recomended.slice(0,4)' :key='game.id' :i='i' :id='game.id' :title='game.title' :body='game.body' :category='game.category'></card>
+                    </div>
+                    <div class="center-align">
+                        <a class="waves-effect waves-light btn">See More</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,15 +61,6 @@
             $route: 'getDetails'
         },
         methods: {
-            txtAnimation (txt,x) {
-                let that = this;
-                that[x] = '';
-                for (let i = 0; i < txt.length; i++) {
-                    setTimeout(function () {
-                        that[x] =  that[x] + txt[i];
-                    }, 10 * (i + 1));
-                }
-            },
             getDetails() {
                 let that = this;
                 let gameId = that.$route.params.id;
@@ -101,10 +68,8 @@
                 .then((response) => {
                     response.data = response.data.filter(x => x.id == gameId)
                     that.img = response.data[0].img;
-                    that.txtAnimation(response.data[0].title, 'title');
-                    setTimeout(function () {
-                    that.txtAnimation(response.data[0].body, 'body');
-                    }, 10 * (response.data[0].title.length));
+                    that.title = response.data[0].title;
+                    that.body = response.data[0].body;
                 });
             }
         },
@@ -126,24 +91,17 @@
 
 <style>
 .details .details-layout {
-  background:linear-gradient(rgba(0, 51, 204,.2),rgba(0, 51, 204,.2)), url('../assets/pic_01.png') fixed;
-  padding-top:60px;
-  padding-bottom:60px;
+  padding:15px 15px 30px 15px;
 }
-.details .details-layout .slider {
-    height:340px !important;
-}
-.details .details-layout .slider .slides {
-    height:300px !important;
-}
-.details .img, .details .txt-container .txt {
-    background-color:rgba(0,0,0,.5);
-    padding:15px;
-    margin:30px auto;
-}
-.details .img {max-width:300px;}
+.details .img {max-width:100%; text-align: center;}
 .details .txt-container .img img {
     margin:auto;
+}
+.details .txt-container .txt {
+    margin-left:30px;
+}
+.details .txt-container .txt h1 {
+    font-size:28px;
 }
 .details .txt-container .txt h2 {
     font-size:22px;
@@ -153,6 +111,7 @@
   font-size:22px;
   padding-left:45px;
   position:relative;
+  padding-top:30px;
 }
 .details h3:before {
   content:'';
@@ -161,7 +120,6 @@
   height:45px;
   top: -9px;
   left: 0px;
-  background:url('../assets/heart.png') no-repeat;
   background-position:0 0;
 }
 </style>

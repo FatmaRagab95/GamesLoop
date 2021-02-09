@@ -2,70 +2,55 @@
   <div class="home">
     <headerLayout/>
 
-    <div class='group-section'>
-      <div class='container'>
-
-        <div class='white-text filter'>
-          <form @submit.prevent>
-              <div class="input-field col s12">
-                <h4>Filtered By:</h4>
-                <select v-model='filter'>
-                  <option value="">All</option>
-                  <option value="Adventure">Adventure</option>
-                  <option value="Action">Action</option>
-                  <option value="Dress Up">Dress Up</option>
-                  <option value="Race">Race</option>
-                  <option value="Sports">Sports</option>
-                </select>
+    <div class='container'>
+      <div class='group-section'>
+          <div class='layout'>
+            <div class="row">
+              <div class="col l8">
+                <div class='featured-img responsive-img'>
+                  <img src='../assets/Bitmap@1X(14).png'/>
+                </div>
               </div>
-          </form>
-        </div>
+              <div class="col l4">
+                <div class='txt'>
+                  <h3>Subway Surfers</h3>
+                  <p>SURF the urban wave!
+                      DODGE the oncoming trains!
+                      GRIND trains with your cool… crew of friends!
 
-        <h3 class='mainFont lime-text text-accent-2'>
-          Featured Games
-        </h3>
-        <div class='layout'>
-          <div class="row">
-            <card v-for='game in data.slice(0,4)' :key='game.id' :id='game.id' :title='game.title' :body='game.body'  :category='game.category'></card>
+                      Run as far as you can on the endless train tracks with your friends Jake, Tricky & Fresh whilst attempting to escape from the Inspector and his fast paced dog… Read more.</p>
+                      <span class='grey-text'>300 Downloads</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="center-align">
-            <a class="waves-effect waves-light btn">See More</a>
+      </div>
+
+      <div class='group-section'>
+          <h3>Most Recommended</h3>
+          <div class='layout'>
+            <div class="row">
+              <card v-for='(game,i) in data.slice(0,4)' :key='game.id' :i='i' :id='game.id' :title='game.title' :body='game.body'  :category='game.category'></card>
+            </div>
+            <div class="center-align">
+              <a class="waves-effect waves-light btn">See More</a>
+            </div>
           </div>
-        </div>
+      </div>
+
+      <div class='group-section'>
+          <h3>Most Popular</h3>
+          <div class='layout'>
+            <div class="row">
+              <card v-for='(game,i) in data.slice(0,4)' :key='game.id' :i='i' :id='game.id' :title='game.title' :body='game.body' :category='game.category'></card>
+            </div>
+            <div class="center-align">
+              <a class="waves-effect waves-light btn">See More</a>
+            </div>
+          </div>
       </div>
     </div>
 
-    <div class='group-section'>
-      <div class='container'>
-        <h3 class='mainFont lime-text text-accent-2'>
-           Most Recommended
-        </h3>
-        <div class='layout'>
-          <div class="row">
-            <card v-for='game in data.slice(0,4)' :key='game.id' :id='game.id' :title='game.title' :body='game.body'  :category='game.category'></card>
-          </div>
-          <div class="center-align">
-            <a class="waves-effect waves-light btn">See More</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class='group-section'>
-      <div class='container'>
-        <h3 class='mainFont lime-text text-accent-2'>
-           Most Popular
-        </h3>
-        <div class='layout'>
-          <div class="row">
-            <card v-for='game in data.slice(0,4)' :key='game.id' :id='game.id' :title='game.title' :body='game.body' :category='game.category'></card>
-          </div>
-          <div class="center-align">
-            <a class="waves-effect waves-light btn">See More</a>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -114,47 +99,19 @@ export default {
 </script>
 
 <style>
-.filter {
-  max-width:150px;
-  margin:0 1px 0 auto
-}
-.filter h4 {
-  font-size:22px;
-}
-.select-wrapper input.select-dropdown {
-    background-color: #fff;
-    display: inline-block;
-    padding:0 10px;
-}
 .home h3 {
   font-size:22px;
-  position:relative;
-  padding-left:45px;
+  padding:30px 30px 0 30px;
 }
-.home h3:before {
-  content:'';
-  position: absolute;
-  width:45px;
-  height:45px;
-  top: -9px;
-  left: 0px;
-  background:url('../assets/heart.png') no-repeat;
+.home .featured-img {
+  padding:30px 30px 0 30px;
 }
-.home .group-section:nth-of-type(1) h3:before {
-  background-position:0 0;
-}
-.home .group-section:nth-of-type(2) h3:before {
-  background-position:-45px 0px;
-}
-.home .group-section:nth-of-type(3) h3:before {
-  background-position:-90px 0;
+.home .featured-img img {
+  max-width:100%;
 }
 @media only screen and (max-width: 767px) {
   .home h3 {
     font-size:16px;
-  }
-  .home h3 img {
-    width:40px;
   }
 }
 </style>

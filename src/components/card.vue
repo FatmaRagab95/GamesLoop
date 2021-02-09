@@ -1,16 +1,18 @@
 <template>
-    <div class="col s12 m3 card-box">
-        <div class="card">
-            <div class="card-content white-text">
-                <span class="badge white-text">{{category}}</span>
-                <div class="img center-align">
-                    <img class="responsive-img" src='https://via.placeholder.com/200x150' />
-                </div>
-                <span class="card-title truncate lime-text text-accent-2">{{title}}</span>
-                <p class='truncate'>{{body}}</p>
-                </div>
-                <div class="card-action">
-                <router-link :to='{name:"Details", params:{"id": id}}' class='lime-text text-accent-2'>See Details</router-link >
+    <div class="col s12 l3 m6 card-box">
+        <div class="card white">
+            <div class="card-content">
+                <router-link :to='{name:"Details", params:{"id": id}}'>
+                    <div class="img center-align">
+                        <img v-if='i == 0' class="responsive-img" src='../assets/0.png' />
+                        <img v-else-if="i == 1" class="responsive-img" src='../assets/1.png' />
+                        <img v-else-if="i == 2" class="responsive-img" src='../assets/2.png' />
+                        <img v-else-if="i == 3" class="responsive-img" src='../assets/3.png' />
+                    </div>
+                    <span class="card-title truncate">{{title}}</span>
+                    <p class='truncate'>{{body}}</p>
+                    <span class="chip yellow">{{category}}</span>
+                </router-link >
             </div>
         </div>
     </div>
@@ -19,7 +21,7 @@
 <script>
 export default {
     name:'card',
-    props:['category', 'title', 'body', 'id' ],
+    props:["i", 'category', 'title', 'body', 'id' ],
     data() {
         return {
 
@@ -31,10 +33,7 @@ export default {
 <style>
 .card {
     background-color:rgba(0,0,0,.5);
-}
-.card .badge {
-    font-size: 14px;
-    margin-top: -33px;
-    background-color:#c00;
+    padding-top:0;
+    box-shadow:0 0 1px #ccc;
 }
 </style>

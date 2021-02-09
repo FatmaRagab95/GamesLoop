@@ -3,9 +3,8 @@
         <nav class=''>
             <div class='container'>
                 <div class="nav-wrapper">
-                <router-link :to="{name:'Home'}" class="mainFont brand-logo lime-text text-accent-2">
-                  <span>Games Loop</span>
-                  <img src='../../assets/controller.png'/>
+                <router-link :to="{name:'Home'}" class="brand-logo">
+                  <img src='../../assets/logo.jpg' />
                 </router-link>
                 <ul class="right hide-on-med-and-down">
                     <li>
@@ -26,9 +25,9 @@
                     </li>
                     <li class="dds">
                         <a class="dropdown-trigger" data-target="dropdown">
-                            <i class="material-icons">arrow_drop_down</i>
+                            <i class="material-icons black-text">more_vert</i>
                         </a>
-                        <ul id="dropdown" class="dropdown-content lime accent-2">
+                        <ul id="dropdown" class="dropdown-content">
                             <li><a href="#" class=''>Services</a></li>
                             <li><a href="#" class=''>About</a></li>
                             <li><a href="#" class=''>Blog</a></li>
@@ -37,12 +36,11 @@
                     </li>
                 </ul>
 
-                  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                  <ul id="slide-out" class="sidenav lime accent-2">
+                  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
+                  <ul id="slide-out" class="sidenav">
                       <li>
-                        <router-link :to="{name:'Home'}" class="mainFont brand-logo">
-                          <span>Games Loop</span>
-                          <img src='../../assets/controller.png'/>
+                        <router-link :to="{name:'Home'}" class="brand-logo">
+                          <img src='../../assets/logo.jpg' />
                         </router-link>
                       </li>
                       <li><div class="divider"></div></li>
@@ -77,20 +75,11 @@ export default {
 <style>
 
 nav {
-  background:linear-gradient(rgba(8, 8, 91, 0.4),rgba(8, 8, 91, 0.4)), url('../../assets/noise.png')  center;
-  background:#c00;
+  background:#fff;
 }
-
-nav .brand-logo {
-    font-size:24px;
-    display:flex;
-    align-items:center;
-}
-
 nav .brand-logo img {
-  max-width: 55px;
-  max-height: 55px;
-  margin:0 10px;
+  max-width: 100px;
+  margin:10px;
 }
 
 nav form {
@@ -196,22 +185,20 @@ input.search-field:focus ~ .search-popup {
   min-width:120px !important;
 }
 .dropdown-content li > a, .dropdown-content li > span {
-    color:#173893;
+    color:#000;
 }
 
 .sidenav {
   font-size:30px;
 }
-.sidenav .brand-logo {    
-    color: #c00;
+.sidenav .brand-logo { 
     position: relative;
-    font-size: 14px;
-    display: flex;
     align-items: center;
     margin: 20px;
+    margin-top: 0;
+    margin-bottom: 40px;
 }
 .sidenav li > a {
-    color:#173893;
     display: block;
     font-size: 18px;
     font-weight: 500;
@@ -224,14 +211,12 @@ input.search-field:focus ~ .search-popup {
 
 @media only screen and (max-width: 992px) {
   nav .brand-logo {
-    font-size:15px;
     transform: translateX(0%);
     right: 0px;
     left: auto;
   }
   nav .brand-logo img {
-    max-width:40px;
-    max-height:40px;
+    max-width:60px;
   }
 }
 

@@ -1,48 +1,23 @@
 <template>
     <header>
       <div class='layout'>
-
-        <div class="txt">
-          <div class='container'>
-            <h1 class='lime-text text-accent-2'>Welcome,</h1>
-            <p>quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam.</p>
-          </div>
-        </div>
-
         <!-- start categories -->
-        <div class='cats center-align'>
-          <div class="carousel lime-text text-accent-2">
+        <div class='cats center-align variable-width'>
             <a class="carousel-item" href='#' @click='changeCat("Adventure")'>
-              <div class='text-align-center img'>
-                <img src='../assets/2.png' />
-              </div>
-              Adventure Games <span></span>
+               <span class='chip white'>Adventure Games</span>
             </a>
             <a class="carousel-item" href='#' @click='changeCat("Action")'>
-              <div class='text-align-center img'>
-                <img src='../assets/3.png' />
-              </div>
-              Action Games <span></span>
+               <span class='chip white'>Action Games</span>
             </a>
             <a class="carousel-item" href='#' @click='changeCat("Dress Up")'>
-              <div class='text-align-center img'>
-                <img src='../assets/heels.png' />
-              </div>
-              Dress Up Games <span></span>
+               <span class='chip white'>Dress Up Games</span>
             </a>
             <a class="carousel-item"  href='#' @click='changeCat("Race")'>
-              <div class='text-align-center img'>
-                <img src='../assets/4.png' />
-              </div>
-              Race Games <span></span>
+               <span class='chip white'>Race Games</span>
             </a>
             <a class="carousel-item" href='#' @click='changeCat("Sports")'>
-              <div class='text-align-center img'>
-                <img src='../assets/1.png' />
-              </div>
-              Sports Games <span></span>
+               <span class='chip white'>Sports Games</span>
             </a>
-          </div>
         </div>
       </div>
     </header>
@@ -65,39 +40,21 @@ export default {
 </script>
 
 <style>
-.home header {
-  background:linear-gradient(rgba(0, 51, 204,.2),rgba(0, 51, 204,.2)), url('../assets/pic_01.png')  fixed;
-  padding-top:30px;
-}
 .home header .layout {
-  height:100%;
-  background:url('../assets/floor06.png') no-repeat center bottom;
-  background-size:contain;
-  padding-bottom:300px;
-}
-.home header .layout .txt p {
-  max-width:450px;
-  color:#fff
+  box-shadow: 0 0 2px #ccc;
+  padding: 15px;
+  overflow:hidden;
+  background-color:#fff;
+  margin-bottom:60px;
 }
 .home header .cats p {
-  max-width:300px;
+  max-width:200px;
   margin:30px auto;
 }
-.home header .carousel {
-    height: 400px;
-}
 .home header .cats .carousel-item {
-  height:auto;
-  font-size: 18px;
-  width:300px;
+  width:200px;
 }
-.home header .cats a img {
-  max-width:150px;
-}
-.home header .cats a span {
-  background:url('../assets/navi-bg.png') no-repeat center;
-  background-size:contain;
-  display: block;
-  height:80px;
+.home header .cats .carousel-item .chip {
+  border:1px solid #ccc;
 }
 </style>

@@ -18,11 +18,19 @@ export default {
   methods: {
     update() {
       setTimeout(function () {
-        $('.slider').slider();
-        $('select').formSelect();
-        $('.carousel').carousel({
-          indicators: true,
+        $('.variable-width').slick({
+          dots: false,
+          infinite: true,
+          speed: 300,
+          slidesToShow: 5,
+          centerMode: true,
+          variableWidth: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
         });
+    
       }, 1000);
       window.scroll({
         top: 0,
@@ -34,10 +42,17 @@ export default {
   },
   created () {
     $(document).ready(function() {
-        $('.slider').slider();
-        $('select').formSelect();
-        $('.carousel').carousel({
-          indicators: true,
+        $('.variable-width').slick({
+          dots: false,
+          infinite: true,
+          speed: 300,
+          slidesToShow: 5,
+          centerMode: true,
+          variableWidth: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
         });
     });
   }
@@ -48,36 +63,25 @@ export default {
 
 /* global rules*/
 body {
-  background-color:#000;
-  font-family: 'Play', sans-serif;
+  font-family: 'Tajawal', sans-serif;
   line-height:2;
+  background-color:#f4f4f4;
 }
 a, a:hover {
   color:inherit
 }
-.mainFont {
-  font-family: 'Press Start 2P', cursive;
+.btn, .btn-large, .btn-small {
+    background-color: #ea1e2e;
 }
-.rounded-circle {
-  border-radius:50%;
+.btn:hover, .btn-large:hover, .btn-small:hover {
+  background-color:#ea1e2e;
+  opacity: .8;
+}
+.group-section {
+  margin-bottom:60px;
+  background-color:#fff;
+  box-shadow:0 0 5px #eee;
+  padding-bottom:30px;
 }
 
-.group-section {
-  background:url('assets/floor08.png') no-repeat bottom;
-  margin-bottom:120px;
-}
-.group-section .layout {
-  padding:30px;
-  margin-top:60px;
-  background:linear-gradient(rgba(0, 51, 204,.2),rgba(0, 51, 204,.2)), url('assets/pic_01.png') fixed;
-}
-.group-section .layout .btn{
-  background-color:#c00;
-}
-/*global responsive*/
-@media screen and (min-width:993px) {
-  .container {
-    width:85%;
-  }
-}
 </style>
