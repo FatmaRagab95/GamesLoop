@@ -2,8 +2,9 @@
     <div class="col s12 m3 card-box">
         <div class="card">
             <div class="card-content white-text">
+                <span class="badge white-text">{{category}}</span>
                 <div class="img center-align">
-                    <img class="responsive-img" src='//via.placeholder.com/200x150' />
+                    <img class="responsive-img" src='https://via.placeholder.com/200x150' />
                 </div>
                 <span class="card-title truncate lime-text text-accent-2">{{title}}</span>
                 <p class='truncate'>{{body}}</p>
@@ -18,7 +19,7 @@
 <script>
 export default {
     name:'card',
-    props:['title', 'body', 'id'],
+    props:['category', 'title', 'body', 'id' ],
     data() {
         return {
 
@@ -30,5 +31,10 @@ export default {
 <style>
 .card {
     background-color:rgba(0,0,0,.5);
+}
+.card .badge {
+    font-size: 14px;
+    margin-top: -33px;
+    background-color:#c00;
 }
 </style>

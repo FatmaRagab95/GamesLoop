@@ -12,32 +12,36 @@
         <!-- start categories -->
         <div class='cats center-align'>
           <div class="carousel lime-text text-accent-2">
-            <a class="carousel-item" href="#one!">
+            <a class="carousel-item" href='#' @click='changeCat("Adventure")'>
               <div class='text-align-center img'>
                 <img src='../assets/2.png' />
               </div>
               Adventure Games <span></span>
             </a>
-            <a class="carousel-item" href="#two!">
+            <a class="carousel-item" href='#' @click='changeCat("Action")'>
               <div class='text-align-center img'>
                 <img src='../assets/3.png' />
               </div>
-              Action Games <span></span></a>
-            <a class="carousel-item" href="#three!">
+              Action Games <span></span>
+            </a>
+            <a class="carousel-item" href='#' @click='changeCat("Dress Up")'>
               <div class='text-align-center img'>
                 <img src='../assets/heels.png' />
               </div>
-              Dress Up Games <span></span></a>
-            <a class="carousel-item" href="#four!">
+              Dress Up Games <span></span>
+            </a>
+            <a class="carousel-item"  href='#' @click='changeCat("Race")'>
               <div class='text-align-center img'>
                 <img src='../assets/4.png' />
               </div>
-              Race Games <span></span></a>
-            <a class="carousel-item" href="#five!">
+              Race Games <span></span>
+            </a>
+            <a class="carousel-item" href='#' @click='changeCat("Sports")'>
               <div class='text-align-center img'>
                 <img src='../assets/1.png' />
               </div>
-              Sports Games <span></span></a>
+              Sports Games <span></span>
+            </a>
           </div>
         </div>
       </div>
@@ -45,13 +49,18 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default {
   name: 'headerLayout',
   data () {
     return {
     }
   },
+  methods: {
+    changeCat(x) {
+      this.$store.commit('changeCat', x)
+    }
+  }
 }
 </script>
 

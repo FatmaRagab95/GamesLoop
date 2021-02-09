@@ -10,7 +10,7 @@
                             <div class="slider">
                                 <ul class="slides">
                                 <li>
-                                    <img src="https://via.placeholder.com/500">
+                                    <img :src="img">
                                 </li>
                                 <li>
                                     <img src="https://via.placeholder.com/500">
@@ -55,7 +55,7 @@
                 </h3>
                 <div class='layout'>
                 <div class="row">
-                    <card v-for='game in recomended.slice(0,8)' :key='game.id' :id='game.id' :title='game.title' :body='game.body'></card>
+                    <card v-for='game in recomended.slice(0,8)' :key='game.id' :id='game.id' :title='game.title' :body='game.body' :category='game.category'></card>
                 </div>
                 <div class="center-align">
                     <a class="waves-effect waves-light btn">See More</a>
@@ -77,31 +77,42 @@
             return {
                 title:'',
                 body: '',
+                img:'',
                 recomended: []
             }
+        },
+        watch: {
+            $route: 'getDetails'
         },
         methods: {
             txtAnimation (txt,x) {
                 let that = this;
+                that[x] = '';
                 for (let i = 0; i < txt.length; i++) {
                     setTimeout(function () {
                         that[x] =  that[x] + txt[i];
                     }, 10 * (i + 1));
                 }
             },
+            getDetails() {
+                let that = this;
+                let gameId = that.$route.params.id;
+                axios.get(`https://api.jsonbin.io/b/602202ebd5aafc6431a60c88/2`)
+                .then((response) => {
+                    response.data = response.data.filter(x => x.id == gameId)
+                    that.img = response.data[0].img;
+                    that.txtAnimation(response.data[0].title, 'title');
+                    setTimeout(function () {
+                    that.txtAnimation(response.data[0].body, 'body');
+                    }, 10 * (response.data[0].title.length));
+                });
+            }
         },
         created() {
             let that = this;
-            let gameId = that.$route.params.id;
-            axios.get(`http://jsonplaceholder.typicode.com/posts?id=${gameId}`)
-            .then((response) => {
-                that.txtAnimation(response.data[0].title, 'title');
-                setTimeout(function () {
-                  that.txtAnimation(response.data[0].body, 'body');
-                }, 10 * (response.data[0].title.length));
-            });
+            that.getDetails();
 
-            axios.get(`http://jsonplaceholder.typicode.com/posts?userId=2`)
+            axios.get(`https://api.jsonbin.io/b/602202ebd5aafc6431a60c88/2`)
             .then((response) => {
                 that.recomended = response.data
             });
@@ -116,7 +127,6 @@
 <style>
 .details .details-layout {
   background:linear-gradient(rgba(0, 51, 204,.2),rgba(0, 51, 204,.2)), url('../assets/pic_01.png') fixed;
-  min-height:100vh;
   padding-top:60px;
   padding-bottom:60px;
 }

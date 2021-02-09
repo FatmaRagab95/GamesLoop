@@ -10,6 +10,8 @@
 
 import navLayout from '@/components/layout/navbar'
 import footerLayout from '@/components/layout/footer'
+
+
 export default {
   name: 'App',
   components: {navLayout, footerLayout},
@@ -17,6 +19,7 @@ export default {
     update() {
       setTimeout(function () {
         $('.slider').slider();
+        $('select').formSelect();
         $('.carousel').carousel({
           indicators: true,
         });
@@ -32,6 +35,7 @@ export default {
   created () {
     $(document).ready(function() {
         $('.slider').slider();
+        $('select').formSelect();
         $('.carousel').carousel({
           indicators: true,
         });

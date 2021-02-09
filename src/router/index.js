@@ -11,9 +11,10 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      alias: '/'
     },{
-      path: '/:id',
+      path: '/viewDetails/:id',
       name: 'Details',
       component: Details
     }
